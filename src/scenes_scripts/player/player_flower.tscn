@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqqfv8ussldol"]
+
+[ext_resource type="Script" uid="uid://cda4cqvw6plw" path="res://src/scenes_scripts/player/player_flower.gd" id="1_m1ahe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1ahe"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3lbi1"]
+radius = 0.25
+height = 1.0
+
+[node name="Player_flower" type="CharacterBody3D"]
+script = ExtResource("1_m1ahe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_m1ahe")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -8)
+collision_mask = 2
+hit_back_faces = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3lbi1")
