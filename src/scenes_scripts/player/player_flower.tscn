@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqqfv8ussldol"]
+[gd_scene load_steps=7 format=3 uid="uid://cqqfv8ussldol"]
 
 [ext_resource type="Script" uid="uid://cda4cqvw6plw" path="res://src/scenes_scripts/player/player_flower.gd" id="1_m1ahe"]
 
@@ -10,6 +10,19 @@ height = 1.0
 radius = 0.25
 height = 1.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m1ahe"]
+radius = 3.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1ahe"]
+transparency = 1
+albedo_color = Color(0.665667, 1, 0.66, 0.596078)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m1ahe"]
+material = SubResource("StandardMaterial3D_m1ahe")
+flip_faces = true
+top_radius = 3.5
+bottom_radius = 3.5
+
 [node name="Player_flower" type="CharacterBody3D"]
 script = ExtResource("1_m1ahe")
 
@@ -20,9 +33,22 @@ shape = SubResource("CapsuleShape3D_m1ahe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -8)
+target_position = Vector3(0, 0, -12)
 collision_mask = 2
 hit_back_faces = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_3lbi1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="AuraCollision" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0067749, 0)
+shape = SubResource("CylinderShape3D_m1ahe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("CylinderMesh_m1ahe")
+skeleton = NodePath("")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered_aura"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited_aura"]

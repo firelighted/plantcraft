@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn0os4yb28p51"]
+
+[ext_resource type="Script" uid="uid://b3lb60ubldlf6" path="res://src/scenes_scripts/plant/plant.gd" id="1_h5shn"]
+[ext_resource type="PackedScene" uid="uid://b26t6etk0jvk2" path="res://src/scenes_scripts/plant/leaf.tscn" id="3_5x3lp"]
+[ext_resource type="PackedScene" uid="uid://by5fr1o8nhytx" path="res://src/scenes_scripts/plant/stem.tscn" id="3_gbp7q"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h5shn"]
+height = 1.0
+radius = 0.1
+
+[node name="Plant" type="Node3D"]
+script = ExtResource("1_h5shn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["plant"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" groups=["plant"]]
+shape = SubResource("CylinderShape3D_h5shn")
+
+[node name="Leaves" type="Node3D" parent="."]
+
+[node name="Leaf" parent="Leaves" instance=ExtResource("3_5x3lp")]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, -0.64265)
+skeleton = NodePath("../../Stems/Stem")
+
+[node name="Stems" type="Node3D" parent="."]
+
+[node name="Stem" parent="Stems" instance=ExtResource("3_gbp7q")]
+
+[node name="AuraToGrowTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AuraToGrowTimer" to="." method="_on_aura_to_grow_timer_timeout"]

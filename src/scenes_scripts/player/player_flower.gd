@@ -34,9 +34,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				#looking_at_ray.get_collider().add_block(looking_at_ray.get_collision_point() \
 					#+ looking_at_ray.get_collision_normal() * 0.5, user_block_type)
 	elif looking_at_ray.is_colliding():
-			if looking_at_ray.get_collider().has_method("highlight_block"):
-				looking_at_ray.get_collider().highlight_block(looking_at_ray.get_collision_point() \
-					- looking_at_ray.get_collision_normal()*0.5)
+			if get_parent().has_method("highlight_pos"):
+				get_parent().highlight_pos(looking_at_ray.get_collision_point())
 					
 
 	
@@ -60,3 +59,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
+
+
+func _on_body_entered_aura(body: Node3D) -> void:
+	if body.is_in_group("plant"):
+		if body.get_parent().has_method("enter_player_aura"):
+			body.get_parent().enter_player_aura()
+
+
+func _on_body_exited_aura(body: Node3D) -> void:
+	if body.is_in_group("plant"):
+		if body.get_parent().has_method("exit_player_aura"):
+			body.get_parent().exit_player_aura()

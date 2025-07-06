@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://by5fr1o8nhytx"]
+
+[ext_resource type="Material" uid="uid://bl1vuxbs1y3qb" path="res://src/materials/wood.tres" id="1_kxv8w"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n55pe"]
+material = ExtResource("1_kxv8w")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[node name="Stem" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_n55pe")
+skeleton = NodePath("../..")

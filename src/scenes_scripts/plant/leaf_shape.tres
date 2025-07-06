@@ -1,0 +1,7 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://bhchn2r17jqfh"]
+
+[ext_resource type="Material" uid="uid://bvyp0qx1fsx5v" path="res://src/materials/leaf.tres" id="1_ylwa4"]
+
+[resource]
+material = ExtResource("1_ylwa4")
+height = 0.1

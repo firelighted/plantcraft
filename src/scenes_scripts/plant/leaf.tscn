@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b26t6etk0jvk2"]
+
+[ext_resource type="SphereMesh" uid="uid://bhchn2r17jqfh" path="res://src/scenes_scripts/plant/leaf_shape.tres" id="1_thsqe"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2tqd5"]
+height = 0.05
+radius = 0.435547
+
+[node name="Leaf" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+mesh = ExtResource("1_thsqe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["plant"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.04308e-07, 0, -5.96046e-08, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_2tqd5")

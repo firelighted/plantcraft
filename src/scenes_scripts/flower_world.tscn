@@ -1,17 +1,80 @@
-[gd_scene load_steps=5 format=3 uid="uid://droiduoc05xbh"]
+[gd_scene load_steps=9 format=3 uid="uid://droiduoc05xbh"]
 
 [ext_resource type="Script" uid="uid://b2qedi3mrov3t" path="res://src/scenes_scripts/flower_world.gd" id="1_nvrn4"]
 [ext_resource type="PackedScene" uid="uid://b0v7awggvkcex" path="res://example.tscn" id="1_rxfre"]
 [ext_resource type="PackedScene" uid="uid://cqqfv8ussldol" path="res://src/scenes_scripts/player/player_flower.tscn" id="2_rxfre"]
 [ext_resource type="Texture2D" uid="uid://bihomrlbr2j0v" path="res://icon.svg" id="4_0uk6g"]
+[ext_resource type="PackedScene" uid="uid://cn0os4yb28p51" path="res://src/scenes_scripts/plant/plant.tscn" id="4_02805"]
 
-[node name="World3" type="Node"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uk6g"]
+transparency = 1
+albedo_color = Color(0.4402, 0.58859, 0.71, 0.556863)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_02805"]
+material = SubResource("StandardMaterial3D_0uk6g")
+top_radius = 0.667
+bottom_radius = 2.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0uk6g"]
+radius = 2.0
+
+[node name="World3" type="Node3D"]
 script = ExtResource("1_nvrn4")
 
 [node name="Example" parent="." instance=ExtResource("1_rxfre")]
 
 [node name="Player" parent="." instance=ExtResource("2_rxfre")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71614, 2.68862, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.71614, 2.68862, 0)
+speed = 5
+jump_speed = 10
+
+[node name="Plant" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30462, 1.16471, 5.34923)
+
+[node name="Plant2" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26689, 1.16471, 5.34923)
+
+[node name="Plant3" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88863, 1.16471, 5.34923)
+
+[node name="Plant4" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73694, 1.16471, 5.34923)
+
+[node name="Plant5" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73694, 1.16471, 7.24821)
+
+[node name="Plant6" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.28816, 1.16471, 7.24821)
+
+[node name="Plant7" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79269, 1.16471, 7.24821)
+
+[node name="Plant8" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03782, 1.16471, 7.24821)
+
+[node name="Plant9" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03782, 1.16471, 9.38529)
+
+[node name="Plant10" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13734, 1.16471, 9.38529)
+
+[node name="Plant11" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53429, 1.16471, 9.38529)
+
+[node name="Plant12" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7066, 1.16471, 9.38529)
+
+[node name="Plant13" parent="." instance=ExtResource("4_02805")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7066, 1.16471, 9.38529)
+
+[node name="Highlight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29624, 1.71699, -3.88234)
+mesh = SubResource("CylinderMesh_02805")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Highlight"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Highlight/RigidBody3D"]
+shape = SubResource("CylinderShape3D_0uk6g")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
