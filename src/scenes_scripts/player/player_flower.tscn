@@ -44,9 +44,11 @@ mesh = SubResource("CapsuleMesh_3lbi1")
 
 [node name="AuraCollision" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0067749, 0)
+visible = false
 shape = SubResource("CylinderShape3D_m1ahe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+visible = false
 mesh = SubResource("CylinderMesh_m1ahe")
 skeleton = NodePath("")
 

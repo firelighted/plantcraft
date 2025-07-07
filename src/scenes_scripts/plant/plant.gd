@@ -47,3 +47,10 @@ func grow_to(growth_stage: int):
 
 func _on_aura_to_grow_timer_timeout() -> void:
 	grow_by_amount(1)
+
+var current_pos : Vector3 = position
+var current_angle : Vector3 = Vector3.UP
+var stack : Array = []
+
+func l_system_move_fwd(dist_fwd: float):
+	current_pos += dist_fwd * current_angle

@@ -22,6 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	
 	if Input.is_action_just_pressed("left_click"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if looking_at_ray.is_colliding():
 			print( looking_at_ray.get_collider())
 			if looking_at_ray.get_collider().get_parent().has_method("grow_at_pos"):
