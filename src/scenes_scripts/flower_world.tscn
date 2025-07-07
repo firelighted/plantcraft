@@ -69,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7066, 1.16471, 9.38529)
 
 [node name="Highlight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29624, 1.71699, -3.88234)
+visible = false
 mesh = SubResource("CylinderMesh_02805")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Highlight"]

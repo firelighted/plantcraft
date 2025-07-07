@@ -15,7 +15,7 @@ radius = 3.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1ahe"]
 transparency = 1
-albedo_color = Color(0.665667, 1, 0.66, 0.596078)
+albedo_color = Color(0.665667, 1, 0.66, 0.109804)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m1ahe"]
 material = SubResource("StandardMaterial3D_m1ahe")

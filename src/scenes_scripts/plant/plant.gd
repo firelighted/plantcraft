@@ -12,7 +12,6 @@ var stem_parent : Node3D
 func _ready() -> void:
 	leaf_parent = get_node(leaf_parent_path)
 	stem_parent = get_node(stem_parent_path)
-	grow_to(1)
 	
 func enter_player_aura():
 	$AuraToGrowTimer.start()
@@ -25,6 +24,8 @@ func grow_by_amount(m_stages:int):
 	grow_to(current_stage + m_stages)
 	
 func grow_to(growth_stage: int):
+	$AudioStreamPlayer.volume_db = -growth_stage * 1.5
+	$AudioStreamPlayer.play()
 	current_stage = growth_stage
 	
 	# STEM
